@@ -12,6 +12,7 @@ export class MovieApiServiceService {
   baseurl=  "https://api.themoviedb.org/3";
   apiKey = "3745897674b8050d02b0345ca1817c93";
 
+  //get banners
   bannerApiData():Observable<any>{
     return this.http.get(`${this.baseurl}/trending/all/week?api_key=${this.apiKey}&language=en-US`)
   }
@@ -20,5 +21,61 @@ export class MovieApiServiceService {
   trendingMovieApiData():Observable<any> {
     return this.http.get(`${this.baseurl}/trending/movie/day?api_key=${this.apiKey}&language=en-US`)
   }
+
+  //action moveis
+  actionMovieApiData():Observable<any> {
+    return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apiKey}&with_genres=28`)
+  }
+
+  //adventure movies
+  adventureMovieApiData():Observable<any> {
+    return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apiKey}&with_genres=12`)
+  }
+
+  //animated movies
+  animatedMovieApiData():Observable<any> {
+    return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apiKey}&with_genres=16`)
+  }
+
+  //comedy movies
+  comedyMovieApiData():Observable<any> {
+    return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apiKey}&with_genres=35`)
+  }
+
+  //documentary movies
+  documentaryMovieApiData():Observable<any> {
+    return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apiKey}&with_genres=99`)
+  }
+
+  //science fiction movies
+  scienceFictionMovieApiData():Observable<any> {
+    return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apiKey}&with_genres=878`)
+  }
+
+  //thriller movies
+  thrillerMovieApiData():Observable<any> {
+    return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apiKey}&with_genres=53`)
+}
+
+  //search movie
+  getSearchMovie(data:any):Observable<any> {
+    return this.http.get(`${this.baseurl}/search/movie?api_key=${this.apiKey}&language=en-US&query=${data.movieName}`)
+  }
+
+  //get movie details
+  getMovieDetails(data:any):Observable<any> {
+    return this.http.get(`${this.baseurl}/movie/${data}?api_key=${this.apiKey}`)
+  }
+
+  //get movie video
+  getMovieVideo(data:any):Observable<any> {
+    return this.http.get(`${this.baseurl}/movie/${data}/videos?api_key=${this.apiKey}`)
+  }
+
+  //get movie cast
+  getMovieCast(data:any):Observable<any> {
+    return this.http.get(`${this.baseurl}/movie/${data}/credits?api_key=${this.apiKey}`)
+  }
+  
 
 }
